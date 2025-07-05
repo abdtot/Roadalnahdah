@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كلية رواد النهضة - معرض الصور</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a3d62;
+            --secondary: #1e88e5;
+            --accent: #ffc107;
+            --light: #f5f8fa;
+            --dark: #0d1b2a;
+            --font-main: 'Almarai', sans-serif;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            background-color: var(--primary);
+            padding: 5px;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin: 0;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav a:hover,
+        nav a.active {
+            color: var(--primary);
+            background-color: rgba(10, 61, 98, 0.1);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after,
+        nav a.active::after {
+            width: 70%;
+        }
+        
+        .nav-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .hero-section {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3c72 100%);
+            color: white;
+            padding-top: 80px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .hero-bg-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .gallery-section {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .section-title h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 300px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lightbox-close:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        .lightbox-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .lightbox-nav button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lightbox-nav button:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+            color: var(--dark);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 85px;
+                right: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 80%;
+                height: calc(100vh - 85px);
+                padding: 40px 20px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h3 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <div style="width:60px;height:60px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1.5rem;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h1>كلية رواد <span>النهضة</span></h1>
+                </div>
+                
+                <button class="nav-btn" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about1.html">عن الكلية</a></li>
+                        <li><a href="majors1.html">التخصصات</a></li>
+                        <li><a href="admission1.html">القبول والتسجيل</a></li>
+                        <li><a href="gallery.html" class="active">معرض الصور</a></li>
+                        <li><a href="contact1.html">اتصل بنا</a></li>
+                        <li><a href="https://forms.gle/KteTiZpqBDCJonBd9" class="btn">بوابة الطالب</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-bg-elements" id="bgElements"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h2>معرض الصور لكلية رواد النهضة</h2>
+                <p>استكشف لحظاتنا الجميلة وذكرياتنا الثمينة في مسيرة التعليم</p>
+                <a href="#gallery" class="btn">تصفح المعرض</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h3>لحظات خالدة</h3>
+                <p>لقطات من الحياة الأكاديمية والأنشطة الطلابية في كليتنا</p>
+            </div>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="events">الفعاليات</button>
+                <button class="filter-btn" data-filter="campus">الحرم الجامعي</button>
+                <button class="filter-btn" data-filter="students">الطلاب</button>
+                <button class="filter-btn" data-filter="graduation">التخرج</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- فعاليات -->
+                <div class="gallery-item" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000" alt="حفل توزيع الجوائز">
+                    <div class="gallery-overlay">
+                        <h4>حفل توزيع الجوائز</h4>
+                        <p>حفل تكريم المتفوقين في نهاية العام الدراسي</p>
+                    </div>
+                </div>
+                
+                <!-- حرم جامعي -->
+                <div class="gallery-item" data-category="campus">
+                    <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=1000" alt="مبنى الكلية">
+                    <div class="gallery-overlay">
+                        <h4>مبنى الكلية</h4>
+                        <p>واجهة كلية رواد النهضة الحديثة</p>
+                    </div>
+                </div>
+                
+                <!-- طلاب -->
+                <div class="gallery-item" data-category="students">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000" alt="نشاط طلابي">
+                    <div class="gallery-overlay">
+                        <h4>نشاط طلابي</h4>
+                        <p>طلاب الكلية يشاركون في مسابقة علمية</p>
+                    </div>
+                </div>
+                
+                <!-- تخرج -->
+                <div class="gallery-item" data-category="graduation">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000" alt="حفل التخرج">
+                    <div class="gallery-overlay">
+                        <h4>حفل التخرج</h4>
+                        <p>دفعة جديدة من خريجي كلية رواد النهضة</p>
+                    </div>
+                </div>
+                
+                <!-- فعاليات -->
+                <div class="gallery-item" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1000" alt="المؤتمر العلمي">
+                    <div class="gallery-overlay">
+                        <h4>المؤتمر العلمي</h4>
+                        <p>المؤتمر السنوي للبحث العلمي والابتكار</p>
+                    </div>
+                </div>
+                
+                <!-- حرم جامعي -->
+                <div class="gallery-item" data-category="campus">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000" alt="المكتبة">
+                    <div class="gallery-overlay">
+                        <h4>المكتبة المركزية</h4>
+                        <p>مساحة للتعلم والبحث والدراسة</p>
+                    </div>
+                </div>
+                
+                <!-- طلاب -->
+                <div class="gallery-item" data-category="students">
+                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1000" alt="ورشة عمل">
+                    <div class="gallery-overlay">
+                        <h4>ورشة عمل</h4>
+                        <p>طلاب قسم التصميم في ورشة عمل عملية</p>
+                    </div>
+                </div>
+                
+                <!-- تخرج -->
+                <div class="gallery-item" data-category="graduation">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000" alt="خريجون سعداء">
+                    <div class="gallery-overlay">
+                        <h4>خريجون سعداء</h4>
+                        <p>لحظات الفرح بعد حفل التخرج</p>
+                    </div>
+                </div>
+                
+                <!-- فعاليات -->
+                <div class="gallery-item" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=1000" alt="اليوم المفتوح">
+                    <div class="gallery-overlay">
+                        <h4>اليوم المفتوح</h4>
+                        <p>استقبال طلاب الثانوية العامة لتعريفهم بالكلية</p>
+                    </div>
+                </div>
+                
+                <!-- حرم جامعي -->
+                <div class="gallery-item" data-category="campus">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000" alt="المختبرات">
+                    <div class="gallery-overlay">
+                        <h4>المختبرات العلمية</h4>
+                        <p>مختبرات مجهزة بأحدث التقنيات</p>
+                    </div>
+                </div>
+                
+                <!-- طلاب -->
+                <div class="gallery-item" data-category="students">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000" alt="نادي الطلاب">
+                    <div class="gallery-overlay">
+                        <h4>نادي الطلاب</h4>
+                        <p>أنشطة ترفيهية وثقافية في نادي الطلاب</p>
+                    </div>
+                </div>
+                
+                <!-- تخرج -->
+                <div class="gallery-item" data-category="graduation">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000" alt="تخريج الدفعة الأولى">
+                    <div class="gallery-overlay">
+                        <h4>تخريج الدفعة الأولى</h4>
+                        <p>حفل تخريج الدفعة الأولى من طلاب الكلية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="lightbox-nav">
+            <button id="prevBtn"><i class="fas fa-chevron-right"></i></button>
+            <button id="nextBtn"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="logo.png" alt="">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>عن الكلية</h4>
+                    <p>كلية رواد النهضة صرح تعليمي رائد يسعى لبناء جيل واعٍ ومؤهل لمستقبل مشرق من خلال تقديم برامج تعليمية متميزة وتوفير بيئة تعليمية محفزة للإبداع والابتكار.</p>
+                    <div class="social-links">
+                        <a href="https://n9.cl/oupht" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/shahidalmoayad?t=B5mgCa9LXfOdwB3256IxCw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/abdab_mo?igsh=eXRqbXJ4bjhkbjJk" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul class="contact-info">
+                        <li><a href="index.html"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
+                        <li><a href="about1.html"><i class="fas fa-angle-left"></i> عن الكلية</a></li>
+                        <li><a href="majors1.html"><i class="fas fa-angle-left"></i> التخصصات</a></li>
+                        <li><a href="admission1.html"><i class="fas fa-angle-left"></i> القبول والتسجيل</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-angle-left"></i> معرض الصور</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>اتصل بنا</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>صنعاء سعوان .جولة السيد .بالقرب من محطة ضفار</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>778886237</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>prcmasad@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>السبت - الخميس: 8 صباحاً - 4 مساءً</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>النشرة الإخبارية</h4>
+                    <p>اشترك في نشرتنا الإخبارية لتصلك آخر أخبار الكلية والفعاليات والدورات الجديدة.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit" class="btn">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 كلية رواد النهضة. جميع الحقوق محفوظة.</p>
+                <p>تصميم  وبرمجة شركة سي ستار</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // إنشاء العناصر المتحركة في الخلفية
+        const heroBg = document.getElementById('bgElements');
+        for (let i = 0; i < 15; i++) {
+            const element = document.createElement('div');
+            element.classList.add('bg-element');
+            
+            const size = Math.random() * 100 + 20;
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const delay = Math.random() * 15;
+            const duration = Math.random() * 15 + 10;
+            
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            element.style.left = `${posX}%`;
+            element.style.top = `${posY}%`;
+            element.style.animationDelay = `${delay}s`;
+            element.style.animationDuration = `${duration}s`;
+            
+            heroBg.appendChild(element);
+        }
+        
+        // تفعيل القائمة المتحركة على الأجهزة الصغيرة
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // فلترة الصور في المعرض
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // إزالة النشط من جميع الأزرار
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة النشط للزر المضغوط
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentIndex = 0;
+        const images = Array.from(document.querySelectorAll('.gallery-item'));
+        
+        function openLightbox(index) {
+            const imgSrc = images[index].querySelector('img').src;
+            const imgAlt = images[index].querySelector('img').alt;
+            const caption = images[index].querySelector('h4').textContent;
+            const description = images[index].querySelector('p').textContent;
+            
+            lightboxImg.src = imgSrc;
+            lightboxImg.alt = imgAlt;
+            lightboxCaption.innerHTML = `<h4>${caption}</h4><p>${description}</p>`;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            currentIndex = index;
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                openLightbox(index);
+            });
+        });
+        
+        lightboxClose.addEventListener('click', closeLightbox);
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
+                }
+            }
+        });
+        
+        function showPrevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            openLightbox(currentIndex);
+        }
+        
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            openLightbox(currentIndex);
+        }
+        
+        prevBtn.addEventListener('click', showPrevImage);
+        nextBtn.addEventListener('click', showNextImage);
+    </script>
+</body>
+</html>
