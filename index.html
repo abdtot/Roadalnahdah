@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كلية رواد النهضة  - Roadalnahdah University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #003366;
+            --medium-blue: #0066cc;
+            --light-blue: #e6f2ff;
+            --sky-blue: #f0f8ff;
+            --accent-color: #ff6b6b;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --gray: #666666;
+            --dark-gray: #333333;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            direction: rtl;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--dark-blue);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            color: var(--dark-blue);
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .university-name {
+            color: var(--white);
+        }
+
+        .university-name h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .university-name p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .student-portal {
+            background-color: var(--white);
+            color: var(--dark-blue);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .student-portal:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .language-switch {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider {
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-1 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+        }
+
+        .slide-2 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+        }
+
+        .slide-3 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            right: 15%;
+            transform: translateY(-50%);
+            color: var(--white);
+            max-width: 600px;
+            padding: 30px;
+            background-color: rgba(0, 51, 102, 0.7);
+            border-radius: 10px;
+        }
+
+        .hero-content h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-content h2 span {
+            display: block;
+            font-size: 32px;
+            font-weight: 300;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            right: 50%;
+            transform: translateX(50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background-color: var(--white);
+            transform: scale(1.2);
+        }
+
+        .slider-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
+
+        .arrow {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .arrow:hover {
+            background-color: var(--white);
+            color: var(--dark-blue);
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            background-color: var(--sky-blue);
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark-blue);
+            font-size: 32px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .link-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--dark-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+
+        .link-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        /* Join Section */
+        .join-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .join-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .join-text {
+            flex: 1;
+        }
+
+        .join-text h2 {
+            color: var(--dark-blue);
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .join-text p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .degree-options {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .degree-option {
+            flex: 1;
+            background-color: var(--light-blue);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .degree-option:hover {
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+
+        .degree-option:hover h3 {
+            color: var(--white);
+        }
+
+        .degree-option h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+
+        .join-image {
+            flex: 1;
+            height: 400px;
+            background-color: var(--light-blue);
+            border-radius: 10px;
+            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Future Section */
+        .future-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .future-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: var(--gray);
+            font-size: 18px;
+        }
+
+        .faculties {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .faculty-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .faculty-img {
+            height: 200px;
+            background-color: var(--medium-blue);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .faculty-content {
+            padding: 25px;
+        }
+
+        .faculty-content h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .faculty-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .faculty-btn {
+            display: inline-block;
+            background-color: var(--medium-blue);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .faculty-btn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-img {
+            height: 200px;
+            background-color: var(--light-blue);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .event-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-date {
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .event-content h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .event-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .event-btn {
+            display: inline-block;
+            color: var(--medium-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .event-btn:hover {
+            color: var(--dark-blue);
+        }
+
+        .event-btn i {
+            margin-right: 5px;
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-img {
+            height: 200px;
+            background-color: var(--light-blue);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-date {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .news-content h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .news-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-blue);
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .footer-info h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            margin-left: 10px;
+            color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-right: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .join-content {
+                flex-direction: column;
+            }
+            
+            .join-image {
+                width: 100%;
+            }
+            
+            .hero-content {
+                right: 5%;
+                left: 5%;
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-content h2 {
+                font-size: 36px;
+            }
+            
+            .hero-content h2 span {
+                font-size: 24px;
+            }
+            
+            .degree-options {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 400px;
+            }
+            
+            .hero-content {
+                padding: 20px;
+            }
+            
+            .hero-content h2 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .join-text h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo">س</div>
+                    <div class="university-name">
+                        <h1>كلية رواد النهضة</h1>
+                        <p>Roadalnahdah UNIVERSITY</p>
+                    </div>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                <a href="#" class="student-portal">بوابة الطالب</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">عن الكلية</a></li>
+                    <li><a href="#">الاقسام</a></li>
+                    <li><a href="#">المراكز</a></li>
+                    <li><a href="#">البحث العلمي</a></li>
+                    <li><a href="#">القبول والتسجيل</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+                <div class="language-switch">
+                    <i class="fas fa-globe"></i>
+                    <span>English</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="slider">
+            <div class="slide slide-1 active"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+            
+            <div class="hero-content">
+                <h2>3 اعوام <span>Roadalnahdah University</span></h2>
+                <p>نحن نؤمن بأن التعليم هو مفتاح المستقبل، نسعى لتقديم تعليم متميز يلبي احتياجات سوق العمل ويواكب التطورات العالمية.</p>
+            </div>
+            
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+            
+            <div class="slider-arrows">
+                <div class="arrow prev"><i class="fas fa-chevron-right"></i></div>
+                <div class="arrow next"><i class="fas fa-chevron-left"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links">
+        <div class="container">
+            <h2 class="section-title">روابط سريعة</h2>
+            <div class="links-container">
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>بوابة الطالب</h3>
+                    <p>الوصول إلى الخدمات الطلابية والمواد التعليمية</p>
+                </div>
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>نظام الدراسة</h3>
+                    <p>تعرف على البرامج الأكاديمية ونظام الدراسة بالجامعة</p>
+                </div>
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>التقويم الجامعي</h3>
+                    <p>مواعيد الفصول الدراسية والاختبارات والأحداث الهامة</p>
+                </div>
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>تواصل معنا</h3>
+                    <p>تواصل مع إدارة الجامعة ومراكز الخدمات المختلفة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section class="join-section">
+        <div class="container">
+            <div class="join-content">
+                <div class="join-text">
+                    <h2>انضم إلى كلية رواد النهضة</h2>
+                    <p>تقدم كلية رواد النهضة برامج أكاديمية متميزة تواكب متطلبات العصر وتلبي احتياجات سوق العمل، مع بيئة تعليمية محفزة وأعضاء هيئة تدريس متميزين.</p>
+                    
+                    <div class="degree-options">
+                        <div class="degree-option">
+                            <i class="fas fa-graduation-cap fa-3x"></i>
+                            <h3>دبلوم عالي تطبيقي </h3>
+                            <p>برامج البكالوريوس في مختلف التخصصات</p>
+                        </div>
+                        <div class="degree-option">
+                            <i class="fas fa-book-reader fa-3x"></i>
+                            <h3>بكالريوس</h3>
+                            <p>برامج الدراسات العليا والبحث العلمي</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="join-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Section -->
+    <section class="future-section">
+        <div class="container">
+            <h2 class="section-title">نهتم بمستقبلك</h2>
+            <p class="future-description">نسعى في  كلية رواد النهضة لتقديم تعليم متميز يواكب التطورات العالمية ويلبي احتياجات سوق العمل، مع التركيز على تطوير المهارات الشخصية والقيادية لدى طلابنا ليكونوا روادًا في مجالاتهم.</p>
+            
+            <div class="faculties">
+                <div class="faculty-card">
+                    <div class="faculty-img" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+                    <div class="faculty-content">
+                        <h3> الهندسة</h3>
+                        <p>تقدم برامج متميزة في مختلف تخصصات الهندسة مع مختبرات مجهزة بأحدث التقنيات.</p>
+                        <a href="#" class="faculty-btn">اعرف المزيد</a>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-img" style="background-image: url('https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+                    <div class="faculty-content">
+                        <h3> الطب</h3>
+                        <p>برامج طبية متطورة تواكب أحدث التطورات في المجال الطبي مع مستشفيات تعليمية.</p>
+                        <a href="#" class="faculty-btn">اعرف المزيد</a>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+                    <div class="faculty-content">
+                        <h3> العلوم الإدارية</h3>
+                        <p>برامج إدارية واقتصادية تواكب متطلبات سوق العمل وتطور المهارات القيادية.</p>
+                        <a href="#" class="faculty-btn">اعرف المزيد</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <h2 class="section-title">الفعاليات والأنشطة</h2>
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+                    <div class="event-content">
+                        <div class="event-date">15 أكتوبر 2023</div>
+                        <h3>المؤتمر الدولي للذكاء الاصطناعي</h3>
+                        <p>مؤتمر يهدف إلى استعراض أحدث التطورات في مجال الذكاء الاصطناعي وتطبيقاته في مختلف القطاعات.</p>
+                        <a href="#" class="event-btn">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+                    <div class="event-content">
+                        <div class="event-date">22 أكتوبر 2023</div>
+                        <h3>المهرجان الثقافي السنوي</h3>
+                        <p>مهرجان يعرض التراث الثقافي للطلاب من مختلف الجنسيات مع عروض فنية وتراثية متنوعة.</p>
+                        <a href="#" class="event-btn">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+                    <div class="event-content">
+                        <div class="event-date">5 نوفمبر 2023</div>
+                        <h3>معرض التوظيف الجامعي</h3>
+                        <p>فرصة للطلاب للقاء كبرى الشركات والمؤسسات واستكشاف فرص العمل والتدريب المتاحة.</p>
+                        <a href="#" class="event-btn">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">الأخبار الأخيرة</h2>
+            <div class="news-container">
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+                    <div class="news-content">
+                        <div class="news-date">10 أكتوبر 2023</div>
+                        <h3>جامعة سبا تحصل على الاعتماد الأكاديمي الدولي</h3>
+                        <p>حصلت الجامعة على الاعتماد الأكاديمي الدولي تقديرًا لجودة برامجها التعليمية وتميزها في البحث العلمي.</p>
+                        <a href="#" class="event-btn">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+                    <div class="news-content">
+                        <div class="news-date">5 أكتوبر 2023</div>
+                        <h3>افتتاح مركز الابتكار وريادة الأعمال</h3>
+                        <p>تم افتتاح مركز الابتكار وريادة الأعمال لدعم المشاريع الريادية للطلاب والخريجين.</p>
+                        <a href="#" class="event-btn">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+                    <div class="news-content">
+                        <div class="news-date">1 أكتوبر 2023</div>
+                        <h3>فريق البحث العلمي يفوز بجائزة الابتكار</h3>
+                        <p>فاز فريق البحث العلمي بالجامعة بجائزة الابتكار عن مشروعهم في مجال الطاقة المتجددة.</p>
+                        <a href="#" class="event-btn">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-info">
+                    <div class="footer-logo">س</div>
+                    <h3>كلية رواد النهضة </h3>
+                    <p>Roadalnahdah UNIVERSITY</p>
+                </div>
+                <div class="footer-info">
+                    <h3>معلومات الاتصال</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> سعوان، ص.ب جولة السيد،  بالقرب من محطة ضفار</li>
+                        <li><i class="fas fa-phone-alt"></i> +96778886237</li>
+                        <li><i class="fas fa-envelope"></i> prcmasad@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h3>روابط مفيدة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">خريطة الموقع</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">المكتبة الرقمية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h3>تابعنا</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 جامعة سبأ</p>
+              <p>  برمجة وتصميم &copy; 2025 شركة  SeaStar</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Slider Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevArrow = document.querySelector('.arrow.prev');
+            const nextArrow = document.querySelector('.arrow.next');
+            let currentSlide = 0;
+            let slideInterval = setInterval(nextSlide, 5000);
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                currentSlide = (n + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+            
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+            
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+            
+            prevArrow.addEventListener('click', function() {
+                clearInterval(slideInterval);
+                prevSlide();
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+            
+            nextArrow.addEventListener('click', function() {
+                clearInterval(slideInterval);
+                nextSlide();
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    clearInterval(slideInterval);
+                    showSlide(index);
+                    slideInterval = setInterval(nextSlide, 5000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
